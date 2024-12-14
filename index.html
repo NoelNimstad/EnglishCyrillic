@@ -290,7 +290,7 @@
 																										  .replace(/ŏ/g, "ҩ")
 																										  .replace(/̆/g, "")
 																										  .replace("ˈ", "")
-																										  .replace(/̩/g, "")
+																										  .replace(/̩|ˌ/g, "")
 																										  .replace(/\((.*?)\)/g, "$1");
 					if(result[0] == "{") res("");
 					res(result);
