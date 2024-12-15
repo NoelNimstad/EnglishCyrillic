@@ -515,6 +515,13 @@
 						keyboard_out.removeChild(keyboard_out.lastChild);
 						keyboard_out.innerHTML += "<span>ц</span>";
 					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>c</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>к</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>ξ</span>";
+					}
 					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>х</span>"
 					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>c</span>")
 					{
@@ -633,6 +640,9 @@
 						break;
 					case "KeyK":
 						keyboard_out.innerHTML += "<span>к</span>";
+						break;
+					case "KeyX":
+						keyboard_out.innerHTML += "<span>ξ</span>";
 						break;
 					case "KeyL":
 						keyboard_out.innerHTML += "<span>л</span>";
