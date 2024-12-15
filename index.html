@@ -37,12 +37,42 @@
 				top: -0.4rem;
 				left: 0.15rem;
 			}
+
+			div:focus 
+			{
+				outline: 1px solid blue;
+			}
+
+			#keyboard_out > *:last-child::after
+			{
+				content: "|";
+				color: blue;
+				animation: blink 1s ease infinite;
+			}
+
+			@keyframes blink
+			{
+				0%
+				{
+					opacity: 0;
+				}	
+
+				50%
+				{
+					opacity: 1;
+				}
+
+				100%
+				{
+					opacity: 0;
+				}
+			}
 		</style>
 	</head>
 	<body>
 		<center><h2>English Cyrillic (Erillic)</h2></center>
 		<center style="margin-top: -1rem;"><h3>İɴлiш Ciрiлiк (Δрiлiк)</h3></center>
-		<center style="margin-top: -1rem; margin-bottom: 1rem;"><small style="color: gray;">v1.0.1</small></center>
+		<center style="margin-top: -1rem; margin-bottom: 1rem;"><small style="color: gray;">v1.1.0</small></center>
 		<center>
 			<table>
 				<tr>
@@ -80,6 +110,12 @@
 					<td>C c</td>
 					<td>/s/</td>
 					<td>C<small>Δ</small>н</td>
+				</tr>
+				<tr>
+					<td><u>Z</u>one</td>
+					<td>З з</td>
+					<td>/z/</td>
+					<td>Зoн</td>
 				</tr>
 				<tr>
 					<td><u>Ch</u>urn</td>
@@ -320,8 +356,16 @@
 				</tr>
 			</table>
 		</center>
+		<center><h2 style="margin-top: 2rem;">Keyboard</h2></center>
+		<center style="margin-top: -1rem;"><h3>KīБҩд</h3></center>
+		<center>
+			<div id="keyboard_in" tabindex="0" style="display: flex; justify-content: center; align-items: center; height: 5rem; width: 10rem; border: 1px solid gray; user-select: none;">
+				<p style="color: gray;">Click & type</p>
+			</div>
+			<p id="keyboard_out" style="border: 1px solid gray; min-height: 1.5rem; max-width: 40rem;"></p>
+		</center>
 		<script>
-			const DICT = '{"eɪ":"a","æ":"ɐ","ə":"<small>Δ</small>","ʌ":"<small>Δ</small>","ɚ":"<small>Δ</small>","ɜ":"<small>Δ</small>","ɑ":"ʌ","ɐ":"ʌ","a":"ʌ","b":"<small>Б</small>","s":"c","ʧ⁠":"ч","ʃ":"ш","d":"д","ɪ":"i","i":"i","ɨ":"i","e":"e","ɛ":"e","f":"ф","ɡ":"ґ","ʒ":"ж","h":"х","j":"й","k":"к","l":"л","ɫ":"л","m":"м","n":"н","ŋ":"ɴ","oʊ":"o","əʊ":"o","ɔ":"ҩ","o":"ҩ","ɒ":"ҩ","p":"п","ɹ":"р","r":"р","ɾ":"ϙ","t":"т","ts":"ц","u":"у","ʉ":"у","jɑ":"я","jɐ":"я","ja":"я","jɪ":"ї","ji":"ї","jɨ":"ї","je":"є","jɛ":"є","ju":"ю","jʉ":"ю","ð":"θ","θ":"<small>8</small>","v":"v","w":"в","ʊ":"u","ʔ":"ɂ"}';
+			const DICT = '{"eɪ":"a","æ":"ɐ","ə":"<small>Δ</small>","ʌ":"<small>Δ</small>","ɚ":"<small>Δ</small>","ɜ":"<small>Δ</small>","ɑ":"ʌ","ɐ":"ʌ","a":"ʌ","b":"<small>Б</small>","s":"c","z":"з","ʧ⁠":"ч","ʃ":"ш","d":"д","ɪ":"i","i":"i","ɨ":"i","e":"e","ɛ":"e","f":"ф","ɡ":"ґ","ʒ":"ж","ʤ":"j","h":"х","j":"й","k":"к","l":"л","ɫ":"л","m":"м","n":"н","ŋ":"ɴ","oʊ":"o","əʊ":"o","ɔ":"ҩ","o":"ҩ","ɒ":"ҩ","p":"п","ɹ":"р","r":"р","ɾ":"ϙ","t":"т","ts":"ц","u":"у","ʉ":"у","jɑ":"я","jɐ":"я","ja":"я","jɪ":"ї","ji":"ї","jɨ":"ї","je":"є","jɛ":"є","ju":"ю","jʉ":"ю","ð":"θ","θ":"<small>8</small>","v":"v","w":"в","ʊ":"u","ʔ":"ɂ"}';
 			const dictionary = JSON.parse(DICT);
 
 			const textarea = document.getElementById("input");
@@ -400,6 +444,251 @@
 				for(let i = 0; i < toConvert.length; i++)
 				{
 					result.innerHTML += await Erillic(toConvert[i].toLowerCase());
+				}
+			});
+
+			const keyboard_in = document.getElementById("keyboard_in");
+			const keyboard_out = document.getElementById("keyboard_out");
+			keyboard_in.addEventListener("keydown", e => 
+			{
+				if(e.key == "Backspace")
+				{
+					keyboard_out.removeChild(keyboard_out.lastChild);
+					return;
+				}
+
+				if(e.key == "-")
+				{
+					keyboard_out.lastChild.innerHTML += "̄";
+				}
+
+				if(e.key == "+")
+				{
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>i</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>ʌ</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<ruby>ᗑ<rt style=\"font-size: 0.3rem; margin-bottom: -0.175rem;\">・</rt></ruby>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>ж</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>д</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>j</span>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>ґ</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>н</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>ɴ</span>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>c</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>т</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>ц</span>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>х</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>c</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>ш</span>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>х</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>т</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<small>8</small>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>х</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>д</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>θ</span>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>ʌ</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>j</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>я</span>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>i</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>j</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>ї</span>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>e</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>j</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>є</span>";
+					}
+					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>у</span>"
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>j</span>")
+					{
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.removeChild(keyboard_out.lastChild);
+						keyboard_out.innerHTML += "<span>ю</span>";
+					}
+				}
+
+				switch(e.code)
+				{
+					case "KeyA":
+						if(e.shiftKey)
+						{
+							if(e.altKey)
+							{
+								keyboard_out.innerHTML += "<span>ɐ</span>";
+							} else 
+							{
+								keyboard_out.innerHTML += "<span>a</span>";
+							}
+						} else if(e.altKey)
+						{
+							keyboard_out.innerHTML += "<span>ʌ</span>";
+						} else
+						{
+							keyboard_out.innerHTML += "<small>Δ</small>";
+						}
+						break;
+					case "KeyB":
+						keyboard_out.innerHTML += "<small>Б</small>";
+						break;
+					case "KeyS":
+						if(e.shiftKey)
+						{
+							keyboard_out.innerHTML += "<span>ш</span>";
+						} else 
+						{
+							keyboard_out.innerHTML += "<span>c</span>";
+						}
+						break;
+					case "KeyC":
+						if(e.shiftKey)
+						{
+							keyboard_out.innerHTML += "<span>ж</span>";
+						} else 
+						{
+							keyboard_out.innerHTML += "<span>ч</span>";
+						}
+						break;
+					case "KeyD":
+						keyboard_out.innerHTML += "<span>д</span>";
+						break;
+					case "KeyI":
+						keyboard_out.innerHTML += "<span>i</span>";
+						break;
+					case "KeyE":
+						keyboard_out.innerHTML += "<span>e</span>";
+						break;
+					case "KeyF":
+						keyboard_out.innerHTML += "<span>ф</span>";
+						break;
+					case "KeyG":
+						keyboard_out.innerHTML += "<span>ґ</span>";
+						break;
+					case "KeyJ":
+						keyboard_out.innerHTML += "<span>j</span>";
+						break;
+					case "KeyH":
+						keyboard_out.innerHTML += "<span>х</span>";
+						break;
+					case "KeyY":
+						keyboard_out.innerHTML += "<span>й</span>";
+						break;
+					case "KeyK":
+						keyboard_out.innerHTML += "<span>к</span>";
+						break;
+					case "KeyL":
+						keyboard_out.innerHTML += "<span>л</span>";
+						break;
+					case "KeyM":
+						keyboard_out.innerHTML += "<span>м</span>";
+						break;
+					case "KeyN":
+						if(e.shiftKey)
+						{
+							keyboard_out.innerHTML += "<span>ɴ</span>";
+						} else 
+						{
+							keyboard_out.innerHTML += "<span>н</span>";
+						}
+						break;
+					case "KeyO":
+						if(e.shiftKey)
+						{
+							keyboard_out.innerHTML += "<span>o</span>";
+						} else 
+						{
+							keyboard_out.innerHTML += "<span>ҩ</span>";
+						}
+						break;
+					case "KeyP":
+						keyboard_out.innerHTML += "<span>п</span>";
+						break;
+					case "KeyR":
+						if(e.shiftKey)
+						{
+							keyboard_out.innerHTML += "<span>ϙ</span>";
+						} else 
+						{
+							keyboard_out.innerHTML += "<span>р</span>";
+						}
+						break;
+					case "KeyT":
+						if(e.shiftKey)
+						{
+							if(e.altKey)
+							{
+								keyboard_out.innerHTML += "<span>θ</span>";
+							} else 
+							{
+								keyboard_out.innerHTML += "<span>ц</span>";
+							}
+						} else if(e.altKey)
+						{
+							keyboard_out.innerHTML += "<small>8</small>";
+						} else
+						{
+							keyboard_out.innerHTML += "<span>т</span>";
+						}
+						break;
+					case "KeyU":
+						if(e.shiftKey)
+						{
+							keyboard_out.innerHTML += "<span>у</span>";
+						} else 
+						{
+							keyboard_out.innerHTML += "<span>u</span>";
+						}
+						break;
+					case "KeyV":
+						keyboard_out.innerHTML += "<span>v</span>";
+						break;
+					case "KeyZ":
+						keyboard_out.innerHTML += "<span>з</span>";
+						break;
+					case "KeyQ":
+						keyboard_out.innerHTML += "<span>ɂ</span>";
+						break;
+					case "KeyW":
+						keyboard_out.innerHTML += "<span>в</span>";
+						break;
+					case "Space":
+						if(keyboard_out.lastChild.outerHTML != "<span> </span>") keyboard_out.innerHTML += "<span> </span>";
+						break;
 				}
 			});
 		</script>
