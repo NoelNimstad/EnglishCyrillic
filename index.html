@@ -16,6 +16,12 @@
 			{
 				background-color: lightgray;
 			}
+			
+			td:nth-child(2), td:nth-child(4)
+			{
+				font-family: Helvetica, Arial, sans-serif;
+				padding-top: 0.5rem;
+			}
 
 			td
 			{
@@ -50,6 +56,11 @@
 				animation: blink 1s ease infinite;
 			}
 
+			.erillic
+			{
+				font-family: Helvetica, Arial, sans-serif;
+			}
+
 			@keyframes blink
 			{
 				0%
@@ -71,8 +82,8 @@
 	</head>
 	<body>
 		<center><h2>English Cyrillic (Erillic)</h2></center>
-		<center style="margin-top: -1rem;"><h3>İɴлiш Ciрiлiк (Δрiлiк)</h3></center>
-		<center style="margin-top: -1rem; margin-bottom: 1rem;"><small style="color: gray;">v1.1.0</small></center>
+		<center style="margin-top: -1rem;"><h3 class="erillic">İɴлiш Ciрiлiк (Δрiлiк)</h3></center>
+		<center style="margin-top: -1rem; margin-bottom: 1rem;"><small style="color: gray;">v1.1.1</small></center>
 		<center>
 			<table>
 				<tr>
@@ -226,7 +237,7 @@
 					<td>Хҩт</td>
 				</tr>
 				<tr>
-					<td>Pint</td>
+					<td><u>P</u>int</td>
 					<td>П п</td>
 					<td>/p/</td>
 					<td>Пʌiнт</td>
@@ -265,7 +276,7 @@
 					<td><u>Ya</u>rd</td>
 					<td>Я я</td>
 					<td>/jɑ/ /jɐ/ /ja/</td>
-					<td><span class="Ja-macron">Я</span>д</td>
+					<td>Я̄д</td>
 				</tr>
 				<tr>
 					<td><u>Ye</u>ars</td>
@@ -332,18 +343,18 @@
 			</table>
 		</center>
 		<center style="margin-top: 2rem;">
-			<textarea id="input" style="width: 30rem; min-height: 5rem; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; resize: vertical;" placeholder="İнпΔт лɐтiн iɴґлiш хiр"></textarea>
+			<textarea id="input" style="width: 30rem; min-height: 5rem;" class="erillic" placeholder="İнпΔт лɐтiн iɴґлiш хiр"></textarea>
 		</center>
 		<center style="margin-top: 0.5rem;">
 			<button id="submit">Convert</button>
 		</center>
 		<center>
-			<p id="result" style="max-width: 40rem; text-align: left; font-family: Arial, Helvetica, sans-serif;"></p>
+			<p id="result" style="max-width: 40rem; text-align: left;" class="erillic"></p>
 		</center>
 		<center><h2 style="margin-top: 2rem;">Moby Dick</h2></center>
-		<center style="margin-top: -1rem;"><h3>Мo<small>Б</small>i Дiк</h3></center>
+		<center style="margin-top: -1rem;"><h3 class="erillic">Мo<small>Б</small>i Дiк</h3></center>
 		<center style="margin-top: 1rem;">
-			<p style="max-width: 40rem; text-align: left;">Kҩл мi İшм<small>Δ</small>eл. Cʌм ї<small>Δ</small>рc <small>Δ</small>ґo–нev<small>Δ</small>р мʌiнд хʌҩ лҩɴ прicʌicлi– хɐviɴ лiϙл ҩр нo м<small>Δ</small>нi iн мʌi п<small>Δ</small>c, ɐнд н<small>Δ</small><small>8</small>iɴ п<small>Δ</small>тiкй<small>Δ</small>л<small>Δ</small> ту iнт<small>Δ</small>рecт мi ҩн шҩ, ʌi <small>8</small>ҩт ʌi вuд ceiл <small>Δ</small><small>Б</small>ʌuт <small>Δ</small> лiϙл ɐнд ci <small>θ</small><small>Δ</small> вʌϙ<small>Δ</small>рi пʌт ҩv <small>θ</small><small>Δ</small> в<small>Δ</small>рлд. <a href="https://www.fulltextarchive.com/book/Moby-Dick-or-The-Whalex8185/">[Мo<small>Б</small>i Дiк / Cҩрc]</a></p>
+			<p style="max-width: 40rem; text-align: left;" class="erillic">Kҩ̄л мi İшмa<small>Δ</small>л. Cʌм ї<small>Δ</small>рc <small>Δ</small>ґo–нev<small>Δ</small>р мʌiнд хʌҩ лҩɴ прicʌicлi– хɐviɴ лiϙл ҩр нo м<small>Δ</small>нi iн мʌi п<small>Δ</small>c, ɐнд н<small>Δ</small><small>8</small>iɴ п<small>Δ</small>тiкй<small>Δ</small>л<small>Δ</small> ту iнт<small>Δ</small>рecт мi ҩн шҩ, ʌi <small>8</small>ҩт ʌi вuд ceiл <small>Δ</small><small>Б</small>ʌuт <small>Δ</small> лiϙл ɐнд ci <small>θ</small><small>Δ</small> вʌϙ<small>Δ</small>рi пʌт ҩv <small>θ</small><small>Δ</small> в<small>Δ</small>рлд. <a href="https://www.fulltextarchive.com/book/Moby-Dick-or-The-Whalex8185/">[Мo<small>Б</small>i Дiк / Cҩрc]</a></p>
 			<p style="max-width: 40rem; text-align: left;">Call me Ishmael. Some years ago–never mind how long precisely– having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. <a href="https://www.fulltextarchive.com/book/Moby-Dick-or-The-Whalex8185/">[Moby dick / Source]</a></p>
 		</center>
 		<center><h2 style="margin-top: 2rem;">Ligatures</h2></center>
@@ -352,17 +363,17 @@
 			<table>
 				<tr>
 					<td>Ʌi</td>
-					<td style="font-family: Arial, Helvetica, sans-serif;"><ruby>ᗑ<rt style="font-size: 0.3rem; margin-bottom: -0.175rem;">・</rt></ruby></td>
+					<td class="erillic"><ruby>ᗑ<rt style="font-size: 0.3rem; margin-bottom: -0.09rem;">・</rt></ruby></td>
 				</tr>
 			</table>
 		</center>
 		<center><h2 style="margin-top: 2rem;">Keyboard</h2></center>
-		<center style="margin-top: -1rem;"><h3>KīБҩд</h3></center>
+		<center style="margin-top: -1rem;"><h3 class="erillic">Kī<small>Б</small>ҩд</h3></center>
 		<center>
 			<div id="keyboard_in" tabindex="0" style="display: flex; justify-content: center; align-items: center; height: 5rem; width: 10rem; border: 1px solid gray; user-select: none;">
 				<p style="color: gray;">Click & type</p>
 			</div>
-			<p id="keyboard_out" style="border: 1px solid gray; min-height: 1.5rem; max-width: 40rem;"></p>
+			<p id="keyboard_out" style="border: 1px solid gray; min-height: 1.5rem; padding: 0.5rem 0; max-width: 40rem;" class="erillic"></p>
 		</center>
 		<script>
 			const DICT = '{"eɪ":"a","æ":"ɐ","ə":"<small>Δ</small>","ʌ":"<small>Δ</small>","ɚ":"<small>Δ</small>","ɜ":"<small>Δ</small>","ɑ":"ʌ","ɐ":"ʌ","a":"ʌ","b":"<small>Б</small>","s":"c","z":"з","ʧ⁠":"ч","ʃ":"ш","d":"д","ɪ":"i","i":"i","ɨ":"i","e":"e","ɛ":"e","f":"ф","ɡ":"ґ","ʒ":"ж","ʤ":"j","h":"х","j":"й","k":"к","l":"л","ɫ":"л","m":"м","n":"н","ŋ":"ɴ","oʊ":"o","əʊ":"o","ɔ":"ҩ","o":"ҩ","ɒ":"ҩ","p":"п","ɹ":"р","r":"р","ɾ":"ϙ","t":"т","ts":"ц","u":"у","ʉ":"у","jɑ":"я","jɐ":"я","ja":"я","jɪ":"ї","ji":"ї","jɨ":"ї","je":"є","jɛ":"є","ju":"ю","jʉ":"ю","ð":"θ","θ":"<small>8</small>","v":"v","w":"в","ʊ":"u","ʔ":"ɂ"}';
@@ -423,8 +434,7 @@
 																										   .replace("ɝ", "<small>Δ</small>р")
 																										   .replace(/д͡ж|дж/g, "j")
 																										   .replace(/т͡ш|тш/g, "ч")
-																										   .replace("<small>Δ</small>ː", "<ruby><small>Δ</small><rt style=\"margin-bottom: -0.5rem;\"><b style=\"font-weight: bolder;\">–</b></rt></ruby>")
-																										   .replace("ҩː", "<ruby><small>ҩ</small><rt style=\"margin-bottom: -0.575rem;\"><b style=\"font-weight: bolder;\">–</b></rt></ruby>")
+																										   .replace("<small>Δ</small>ː", "<small>Δ̄</small>")
 																										   .replace("ː", "̄")
 																										   .replace("<small>Δ</small>u", "o")
 																										   .replace(/ŏ/g, "ҩ")
@@ -451,6 +461,12 @@
 			const keyboard_out = document.getElementById("keyboard_out");
 			keyboard_in.addEventListener("keydown", e => 
 			{
+				if(e.key.match(/[.,:?!]+/g))
+				{
+					keyboard_out.innerHTML += "<span>" + e.key + "</span>";
+					return;
+				}
+
 				if(e.key == "Backspace")
 				{
 					keyboard_out.removeChild(keyboard_out.lastChild);
@@ -469,7 +485,7 @@
 					{
 						keyboard_out.removeChild(keyboard_out.lastChild);
 						keyboard_out.removeChild(keyboard_out.lastChild);
-						keyboard_out.innerHTML += "<ruby>ᗑ<rt style=\"font-size: 0.3rem; margin-bottom: -0.175rem;\">・</rt></ruby>";
+						keyboard_out.innerHTML += "<ruby>ᗑ<rt style=\"font-size: 0.3rem; margin-bottom: -0.09rem;\">・</rt></ruby>";
 					}
 					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>ж</span>"
 					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>д</span>")
@@ -514,28 +530,28 @@
 						keyboard_out.innerHTML += "<span>θ</span>";
 					}
 					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>ʌ</span>"
-					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>j</span>")
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>й</span>")
 					{
 						keyboard_out.removeChild(keyboard_out.lastChild);
 						keyboard_out.removeChild(keyboard_out.lastChild);
 						keyboard_out.innerHTML += "<span>я</span>";
 					}
 					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>i</span>"
-					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>j</span>")
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>й</span>")
 					{
 						keyboard_out.removeChild(keyboard_out.lastChild);
 						keyboard_out.removeChild(keyboard_out.lastChild);
 						keyboard_out.innerHTML += "<span>ї</span>";
 					}
 					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>e</span>"
-					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>j</span>")
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>й</span>")
 					{
 						keyboard_out.removeChild(keyboard_out.lastChild);
 						keyboard_out.removeChild(keyboard_out.lastChild);
 						keyboard_out.innerHTML += "<span>є</span>";
 					}
 					if(keyboard_out.children[keyboard_out.childElementCount - 1].outerHTML == "<span>у</span>"
-					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>j</span>")
+					&& keyboard_out.children[keyboard_out.childElementCount - 2].outerHTML == "<span>й</span>")
 					{
 						keyboard_out.removeChild(keyboard_out.lastChild);
 						keyboard_out.removeChild(keyboard_out.lastChild);
